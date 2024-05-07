@@ -1,0 +1,39 @@
+<!-- list-employee-divisions.html -->
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>List Employee Divisions</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css">
+</head>
+<body>
+    <a href="http://localhost:8080/employees/list" class="btn btn-primary btn-sm mb-3">Back to List Employees</a>
+    <div class="container mt-4">
+    <div class="container mt-4">
+        <h1>List of Employee Divisions</h1>
+        <a th:href="@{/employeeDivisions/showFormForAdd}" class="btn btn-primary btn-sm mb-3">Add Employee Division</a>
+        <table class="table table-striped table-bordered">
+            <thead>
+                <tr>
+                    <th>Employee ID</th>
+                    <th>Division ID</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr th:each="employeeDivision : ${employeeDivisions}">
+                    <td th:text="${employeeDivision.empid}"></td>
+                    <td th:text="${employeeDivision.divID}"></td>
+                    <td>
+                        <a th:href="@{/employeeDivisions/showFormForUpdate(empid=${employeeDivision.empid}, divID=${employeeDivision.divID})}" class="btn btn-info btn-sm">Update</a>
+                        <a th:href="@{/employeeDivisions/delete(empid=${employeeDivision.empid}, divID=${employeeDivision.divID})}" class="btn btn-danger btn-sm" onclick="if (!(confirm('Are you sure you want to delete this employee division?'))) return false">Delete</a>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

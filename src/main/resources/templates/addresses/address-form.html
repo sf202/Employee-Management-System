@@ -1,0 +1,47 @@
+<!-- address-form.html -->
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add or Update Address</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+</head>
+<body>
+    <div class="container mt-4">
+        <h1>Add or Update Address</h1>
+        <hr>
+        <form action="#" th:action="@{/addresses/save}" th:object="${address}" method="post">
+            <input type="hidden" th:field="*{empid}" />
+            <div class="mb-4">
+                <label for="addressLine1" class="form-label">Address Line 1:</label>
+                <input type="text" th:field="*{addressLine1}" class="form-control w-25" id="addressLine1" placeholder="Address Line 1">
+            </div>
+            <div class="mb-4">
+                <label for="addressLine2" class="form-label">Address Line 2:</label>
+                <input type="text" th:field="*{addressLine2}" class="form-control w-25" id="addressLine2" placeholder="Address Line 2">
+            </div>
+            <div class="mb-4">
+                <label for="cityID" class="form-label">City ID:</label>
+                <input type="text" th:field="*{cityID}" class="form-control w-25" id="cityID" placeholder="City ID">
+            </div>
+            <div class="mb-4">
+                <label for="stateID" class="form-label">State ID:</label>
+                <input type="text" th:field="*{stateID}" class="form-control w-25" id="stateID" placeholder="State ID">
+            </div>
+            <div class="mb-4">
+                <label for="country" class="form-label">Country:</label>
+                <input type="text" th:field="*{country}" class="form-control w-25" id="country" placeholder="Country">
+            </div>
+            <div class="mb-4">
+                <label for="postalCode" class="form-label">Postal Code:</label>
+                <input type="text" th:field="*{postalCode}" class="form-control w-25" id="postalCode" placeholder="Postal Code">
+            </div>
+            <button type="submit" class="btn btn-primary">Submit</button>
+        </form>
+        <hr>
+        <a th:href="@{/addresses/list}">Back to Address List</a>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

@@ -1,0 +1,30 @@
+<!-- employee-job-title-form.html -->
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add or Update Employee Job Title</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+</head>
+<body>
+    <div class="container mt-4">
+        <h1>Add or Update Employee Job Title</h1>
+        <hr>
+        <form action="#" th:action="@{/employeeJobTitles/save}" th:object="${employeeJobTitle}" method="post">
+            <div class="mb-4">
+                <label for="empid" class="form-label">Employee ID:</label>
+                <input type="text" th:field="*{empid}" class="form-control w-25" id="empid" placeholder="Employee ID">
+            </div>
+            <div class="mb-4">
+                <label for="jobTitleId" class="form-label">Job Title ID:</label>
+                <input type="text" th:field="*{jobTitleId}" class="form-control w-25" id="jobTitleId" placeholder="Job Title ID">
+            </div>
+            <button type="submit" class="btn btn-primary">Submit</button>
+        </form>
+        <hr>
+        <a th:href="@{/employeeJobTitles/list}">Back to Employee Job Title List</a>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

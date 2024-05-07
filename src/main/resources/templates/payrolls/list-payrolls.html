@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>List Payrolls</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+</head>
+<body>
+    <div class="container mt-4">
+        <h1>List of Payrolls</h1>
+        <button class="btn btn-primary mb-3" onclick="goBack()">Go Back to Employee List</button>
+
+        <a th:href="@{/payrolls/showFormForAdd}" class="btn btn-primary btn-sm mb-3">
+            Add Payroll
+        </a>
+        <table class="table table-striped table-bordered">
+            <thead>
+                <tr>
+                    <th>Payroll ID</th>
+                    <th>Pay Date</th>
+                    <th>Earnings</th>
+                    <th>Federal Tax</th>
+                    <th>Federal Medicare</th>
+                    <th>Federal Social Security</th>
+                    <th>State Tax</th>
+                    <th>401(k) Retirement</th>
+                    <th>Health Cost</th>
+                    <th>Employee ID</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr th:each="payroll : ${payrolls}">
+                    <td th:text="${payroll.payid}"></td>
+                    <td th:text="${#dates.format(payroll.payDate, 'yyyy-MM-dd')}"></td>
+                    <td th:text="${#numbers.formatDecimal(payroll.earnings, 0, 2)}"></td>
+                    <td th:text="${#numbers.formatDecimal(payroll.fedTax, 0, 2)}"></td>
+                    <td th:text="${#numbers.formatDecimal(payroll.fedMed, 0, 2)}"></td>
+                    <td th:text="${#numbers.formatDecimal(payroll.fedSS, 0, 2)}"></td>
+                    <td th:text="${#numbers.formatDecimal(payroll.stateTax, 0, 2)}"></td>
+                    <td th:text="${#numbers.formatDecimal(payroll.retire401k, 0, 2)}"></td>
+                    <td th:text="${#numbers.formatDecimal(payroll.healthCost, 0, 2)}"></td>
+                    <td th:text="${payroll.empid}"></td>
+                    <td>
+                        <a th:href="@{/payrolls/showFormForUpdate(payid=${payroll.payid})}" class="btn btn-info btn-sm">Update</a>
+                        <a th:href="@{/payrolls/delete(payid=${payroll.payid})}" class="btn btn-danger btn-sm" onclick="if (!(confirm('Are you sure you want to delete this payroll?'))) return false">Delete</a>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <a href="/employees/list" class="btn btn-secondary">Back</a>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shCk+YLdhR8Q+Pm4+Jw/A8W6k/iP5Gw/L0nxT" crossorigin="anonymous"></script>
+    <script>
+        function goBack() {
+            window.location.href = '/employees/list';
+        }
+    </script>
+</body>
+</html>

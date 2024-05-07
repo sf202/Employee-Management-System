@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>List Divisions</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css">
+</head>
+<body>
+    <a href="http://localhost:8080/employees/list" class="btn btn-primary btn-sm mb-3">Back to List Employees</a>
+    <div class="container mt-4">
+        <h1>List of Divisions</h1>
+        <a th:href="@{/divisions/showFormForAdd}" class="btn btn-primary btn-sm mb-3">Add Division</a>
+
+        <table class="table table-striped table-bordered">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Name</th>
+                    <th>City</th>
+                    <th>Address Line 1</th>
+                    <th>Address Line 2</th>
+                    <th>State</th>
+                    <th>Country</th>
+                    <th>Postal Code</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr th:each="division : ${divisions}">
+                    <td th:text="${division.id}"></td>
+                    <td th:text="${division.name}"></td>
+                    <td th:text="${division.city}"></td>
+                    <td th:text="${division.addressLine1}"></td>
+                    <td th:text="${division.addressLine2}"></td>
+                    <td th:text="${division.state}"></td>
+                    <td th:text="${division.country}"></td>
+                    <td th:text="${division.postalCode}"></td>
+                    <td>
+                        <a th:href="@{/divisions/showFormForUpdate(divisionId=${division.id})}" class="btn btn-info btn-sm">Update</a>
+                        <a th:href="@{/divisions/delete(divisionId=${division.id})}" class="btn btn-danger btn-sm" onclick="if (!(confirm('Are you sure you want to delete this division?'))) return false">Delete</a>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        function goBack() {
+            window.history.back();
+        }
+    </script>
+</body>
+</html>

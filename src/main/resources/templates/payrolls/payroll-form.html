@@ -1,0 +1,60 @@
+<!-- payroll-form.html -->
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add or Update Payroll</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+</head>
+<body>
+    <div class="container mt-4">
+        <h1>Add or Update Payroll</h1>
+        
+        <hr>
+        <form action="#" th:action="@{/payrolls/save}" th:object="${payroll}" method="post">
+            <input type="hidden" th:field="*{payid}" />
+            <div class="mb-4">
+                <label for="payDate" class="form-label">Pay Date:</label>
+                <input type="date" th:field="*{payDate}" class="form-control w-25" id="payDate">
+            </div>
+            <div class="mb-4">
+                <label for="earnings" class="form-label">Earnings:</label>
+                <input type="number" step="0.01" th:field="*{earnings}" class="form-control w-25" id="earnings" placeholder="Earnings">
+            </div>
+            <div class="mb-4">
+                <label for="fedTax" class="form-label">Federal Tax:</label>
+                <input type="number" step="0.01" th:field="*{fedTax}" class="form-control w-25" id="fedTax" placeholder="Federal Tax">
+            </div>
+            <div class="mb-4">
+                <label for="fedMed" class="form-label">Federal Medicare:</label>
+                <input type="number" step="0.01" th:field="*{fedMed}" class="form-control w-25" id="fedMed" placeholder="Federal Medicare">
+            </div>
+            <div class="mb-4">
+                <label for="fedSS" class="form-label">Federal Social Security:</label>
+                <input type="number" step="0.01" th:field="*{fedSS}" class="form-control w-25" id="fedSS" placeholder="Federal Social Security">
+            </div>
+            <div class="mb-4">
+                <label for="stateTax" class="form-label">State Tax:</label>
+                <input type="number" step="0.01" th:field="*{stateTax}" class="form-control w-25" id="stateTax" placeholder="State Tax">
+            </div>
+            <div class="mb-4">
+                <label for="retire401k" class="form-label">401(k) Retirement:</label>
+                <input type="number" step="0.01" th:field="*{retire401k}" class="form-control w-25" id="retire401k" placeholder="401(k) Retirement">
+            </div>
+            <div class="mb-4">
+                <label for="healthCost" class="form-label">Health Cost:</label>
+                <input type="number" step="0.01" th:field="*{healthCost}" class="form-control w-25" id="healthCost" placeholder="Health Cost">
+            </div>
+            <div class="mb-4">
+                <label for="empid" class="form-label">Employee ID:</label>
+                <input type="number" th:field="*{empid}" class="form-control w-25" id="empid" placeholder="Employee ID">
+            </div>
+            <button type="submit" class="btn btn-primary">Submit</button>
+        </form>
+        <hr>
+        <a th:href="@{/payrolls/list}">Back to Payroll List</a>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

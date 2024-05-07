@@ -1,0 +1,47 @@
+<!-- demographics-form.html -->
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add or Update Demographics</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+</head>
+<body>
+    <div class="container mt-4">
+        <h1>Add or Update Demographics</h1>
+        <hr>
+        <form action="#" th:action="@{http://localhost:8080/demographics/save}" th:object="${demographics}" method="post">
+            <input type="hidden" th:field="*{empid}" />
+            <div class="mb-4">
+                <label for="phone" class="form-label">Phone:</label>
+                <input type="text" th:field="*{phone}" class="form-control w-25" id="phone" placeholder="Phone">
+            </div>
+            <div class="mb-4">
+                <label for="gender" class="form-label">Gender:</label>
+                <input type="text" th:field="*{gender}" class="form-control w-25" id="gender" placeholder="Gender">
+            </div>
+            <div class="mb-4">
+                <label for="pronouns" class="form-label">Pronouns:</label>
+                <input type="text" th:field="*{pronouns}" class="form-control w-25" id="pronouns" placeholder="Pronouns">
+            </div>
+            <div class="mb-4">
+                <label for="identifiedRace" class="form-label">Identified Race:</label>
+                <input type="text" th:field="*{identifiedRace}" class="form-control w-25" id="identifiedRace" placeholder="Identified Race">
+            </div>
+            <div class="mb-4">
+                <label for="dateOfBirth" class="form-label">Date of Birth:</label>
+                <input type="date" th:field="*{dateOfBirth}" class="form-control w-25" id="dateOfBirth" placeholder="Date of Birth">
+            </div>
+            <div class="mb-4">
+                <label for="ssn" class="form-label">SSN:</label>
+                <input type="text" th:field="*{ssn}" class="form-control w-25" id="ssn" placeholder="SSN">
+            </div>
+            <button type="submit" class="btn btn-primary">Submit</button>
+        </form>
+        <hr>
+        <a th:href="@{http://localhost:8080/demographics/list}">Back to Demographics List</a>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
